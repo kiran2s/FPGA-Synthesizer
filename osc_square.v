@@ -17,7 +17,6 @@ module osc_square(freq, clk, sig);
     
     always @(posedge clk)
     begin
-        // POSER BULLSHIT
         if (cycleCount >= sigHalfPeriod) begin
             sig <= ~sig;
             cycleCount <= 0;
