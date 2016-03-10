@@ -4,13 +4,13 @@
 // stereo audio output device
 module pmod_out(sig, clk, MCLK, LRCLK, SCLK, SDIN);
     input [15:0] sig;
-    input clk;		// 500MHz clock
-    output MCLK;	// Master clock to send to PmodI2S to maintain
-					// synchronization
-    output LRCLK;	// Left-right clock stereo audio output
-    output SCLK;	// Clock for transmitting induvidual signal bits
-					// to PmodI2S
-    output SDIN;	// Current signal bit to transmit
+    input clk;      // 500MHz clock
+    output MCLK;    // Master clock to send to PmodI2S to maintain
+                    // synchronization
+    output LRCLK;   // Left-right clock stereo audio output
+    output SCLK;    // Clock for transmitting induvidual signal bits
+                    // to PmodI2S
+    output SDIN;    // Current signal bit to transmit
     
     reg MCLK;
     reg LRCLK;
@@ -44,8 +44,8 @@ module pmod_out(sig, clk, MCLK, LRCLK, SCLK, SDIN);
         if (SCLK_count == 50) begin
             SCLK = ~SCLK;
             SCLK_count = 0;
-			// Transmit the signal bit-by-bit at every negative edge of
-			// the SCLK
+            // Transmit the signal bit-by-bit at every negative edge of
+            // the SCLK
             if (SCLK == 0) begin
                 SDIN = sig_temp[15];
                 sig_temp = sig_temp << 1;
@@ -55,8 +55,8 @@ module pmod_out(sig, clk, MCLK, LRCLK, SCLK, SDIN);
         if (LRCLK_count == 1600) begin
             LRCLK = ~LRCLK;
             LRCLK_count = 0;
-			// Reset sig_temp to the current signal when switching sides
-			// of stereo output to transmit
+            // Reset sig_temp to the current signal when switching sides
+            // of stereo output to transmit
             sig_temp = sig;
         end
         
