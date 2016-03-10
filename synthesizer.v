@@ -15,7 +15,7 @@ module synthesizer(clk, sw, JCR, JCC, JA, seg, an);
     wire [15:0] sig_tri;    // Triangle wave
     wire [15:0] sig_sine;   // Sine wave
     wire [15:0] sig;        // Total audio output signal
-    wire [31:0] freq;       // Current frequency to play
+    wire [11:0] freq;       // Current frequency to play
     
     // Pmod keypad input module which allows user to choose which note
     // (frequency) to play
