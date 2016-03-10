@@ -1,20 +1,22 @@
 `timescale 1ns / 1ps
 
+// Module which displays the current note being played to the
+// 7-segment display
 module display(freq, anode, segOut);
 
     input [11:0] freq;
-    output [3:0] anode;				// Controls the display digits
-    output [6:0] segOut;			// Controls which digit to display
+    output [3:0] anode;		// Controls the display digits
+    output [6:0] segOut;	// Controls which digit to display
 	
 	// Output wires and registers
 	wire [3:0] anode;
 	reg [6:0] segOut;
 	
-	// only display the rightmost digit
+	// Only display the rightmost digit
 	assign anode = 4'b1110;
 	
 	always @(freq) begin
-        case (freq)
+        case (freq)						// Musical notes:
             523 : segOut <= 7'b1000110;	// C
             494 : segOut <= 7'b0000011;	// B
             440 : segOut <= 7'b0001000; // A

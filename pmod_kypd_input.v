@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
 
+// Pmod keypad input module which allows user to choose which note
+// (frequency) to play
 module pmod_kypd_input(clk, Row, Col, freq);
     input clk;
     input [3:0] Row;
@@ -12,122 +14,120 @@ module pmod_kypd_input(clk, Row, Col, freq);
 	reg [19:0] sclk;
     
     initial begin
-        //Col = 4'b1111; //
-        freq <= 440;
+        freq <= 440;	// Default note A
         sclk <= 20'b00000000000000000000;
     end
 
 	always @(posedge clk)
     begin
-    
         // 1ms
         if (sclk == 20'b00011000011010100000) begin
-            //C1
+            // Column 1
             Col <= 4'b0111;
             sclk <= sclk + 1'b1;
         end
         
-        // check row pins
+        // Check row pins
         else if(sclk == 20'b00011000011010101000) begin
-            //R1
+            // Row 1
             if (Row == 4'b0111) begin
-                freq <= 523;		//1
+                freq <= 523;		// Button 1
             end
-            //R2
+            // Row 2
             else if(Row == 4'b1011) begin
-                freq <= 494; 		//4
+                freq <= 494; 		// Button 4
             end
-            //R3
+            // Row 3
             else if(Row == 4'b1101) begin
-                freq <= 440; 		//7
+                freq <= 440; 		// Button 7
             end
-            //R4
+            // Row 4
             else if(Row == 4'b1110) begin
-                freq <= 392; 		//0
+                freq <= 392; 		// Button 0
             end
             sclk <= sclk + 1'b1;
         end
 
         // 2ms
         else if(sclk == 20'b00110000110101000000) begin
-            //C2
+            // Column 2
             Col <= 4'b1011;
             sclk <= sclk + 1'b1;
         end
         
-        // check row pins
+        // Check row pins
         else if(sclk == 20'b00110000110101001000) begin
-            //R1
+            // Row 1
             if (Row == 4'b0111) begin
-                freq <= 349; 		//2
+                freq <= 349; 		// Button 2
             end
-            //R2
+            // Row 2
             else if(Row == 4'b1011) begin
-                freq <= 330; 		//5
+                freq <= 330; 		// Button 5
             end
-            //R3
+            // Row 3
             else if(Row == 4'b1101) begin
-                freq <= 294; 		//8
+                freq <= 294; 		// Button 8
             end
-            //R4
+            // Row 4
             else if(Row == 4'b1110) begin
-                freq <= 262; 		//F
+                freq <= 262; 		// Button F
             end
             sclk <= sclk + 1'b1;
         end
 
-        //3ms
+        // 3ms
         else if(sclk == 20'b01001001001111100000) begin
-            //C3
+            // Column 3
             Col<= 4'b1101;
             sclk <= sclk + 1'b1;
         end
         
-        // check row pins
+        // Check row pins
         else if(sclk == 20'b01001001001111101000) begin
-            //R1
+            // Row 1
             if(Row == 4'b0111) begin
-                freq <= 262; 		//3	
+                freq <= 262; 		// Button 3	
             end
-            //R2
+            // Row 2
             else if(Row == 4'b1011) begin
-                freq <= 247; 		//6
+                freq <= 247; 		// Button 6
             end
-            //R3
+            // Row 3
             else if(Row == 4'b1101) begin
-                freq <= 220; 		//9
+                freq <= 220; 		// Button 9
             end
-            //R4
+            // Row 4
             else if(Row == 4'b1110) begin
-                freq <= 196; 		//E
+                freq <= 196; 		// Button E
             end
             sclk <= sclk + 1'b1;
         end
 
-        //4ms
+        // 4ms
         else if(sclk == 20'b01100001101010000000) begin
-            //C4
+            // Column 4
             Col <= 4'b1110;
             sclk <= sclk + 1'b1;
         end
 
         // Check row pins
         else if(sclk == 20'b01100001101010001000) begin
-            //R1
+            // Row 1
             if (Row == 4'b0111) begin
-                freq <= 175; //A
+                freq <= 175; 		// Button A
             end
-            //R2
+            // Row 2
             else if (Row == 4'b1011) begin
-                freq <= 165; //B
+                freq <= 165;		// Button B
             end
-            //R3
+            // Row 3
             else if(Row == 4'b1101) begin
-                freq <= 147; //C
+                freq <= 147; 		// Button C
             end
-            //R4
+            // Row 4
             else if(Row == 4'b1110) begin
-                freq <= 131; //D
+                freq <= 131; 		// Button D
             end
             sclk <= 20'b00000000000000000000;
         end
