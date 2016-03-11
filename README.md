@@ -13,7 +13,7 @@ Use of the FPGA-synthesizer requires the Digilent PmodI2S stereo audio device, w
 
 ## Design Description
 ### Schematic
-![schematic](https://cloud.githubusercontent.com/assets/10604384/13711528/e389f67c-e773-11e5-9830-62ab362c8349.png)
+![schematic](https://cloud.githubusercontent.com/assets/10604384/13713739/6f4e9f86-e77f-11e5-9187-544b286e3d0e.png)
 
 Above is an overall design diagram showing how all of the modules are related to eachother. The core modules are the
 I2S Pmod-out module and the different waveform modules. 
