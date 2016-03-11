@@ -49,7 +49,7 @@ This module generates two different signals.  The first to be generated is the s
 the amplitude is fixed at 0000111111111111, and the period is calculated from the input frequency.  A counter is incremented
 with every clock cycle and resets to 0 at each period.  From here, the output value is calculated according to the following formula:
 
-signal = (amplitude – count) / period – X
+signal = ((amplitude – count) / period) – X
 
 where X = 0 for the first half of the period and X = amplitude for the second half.
 
