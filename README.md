@@ -3,7 +3,7 @@
 The FPGA-Synthesizer is a sound synthesizer for FPGA boards capable of generating 4 different types of waveforms
 (square, sawtooth, triangle, sine) as well as random noise. Each waveform generator can be independently turned on
 and off with switches on the FPGA board, allowing the user to play any combination of waveforms at a time to
-produce different unqiue sounds. 
+produce different unqiue sounds.  
 
 The musical note produced is controlled using the Digilent PmodKYPD 16 button keypad,
 allowing the user to play and create music in real-time. By default, the buttons are mapped to 2 octaves of the C
