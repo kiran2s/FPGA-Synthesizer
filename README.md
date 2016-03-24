@@ -1,5 +1,6 @@
 # FPGA-Synthesizer
 ## Overview
+
 The FPGA-Synthesizer is a sound synthesizer for FPGA boards capable of generating 4 different types of waveforms
 (square, sawtooth, triangle, sine) as well as random noise. Each waveform generator can be independently turned on
 and off with switches on the FPGA board, allowing the user to play any combination of waveforms at a time to
